@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Antonio:wght@300&family=Oswald:wght@200;300;500;600;700&family=Poppins:wght@200;300;700&display=swap');
+
+/* Paleta de colores */
+:root {
+    --background:   #EBEEF5;
+    --secondary:    #353B55;
+
+    --white:        #ffffff;
+    --green:        #008000;   
+    /* --green_lighter: */
+    --yellow:       #ffa500;
+    /* --yellow_lighter:  */
+    --red:          #dc143c;
+    /* --red_lighter:       */
+    /* --purple:    */
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+hr {
+    background: var(--white);
+    opacity: 0.25;
+    height: 1px;
+    margin: 0 7px;
+    border: none;
+}
+.panel {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    background: var(--background);
+}
+.left_panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 7%;
+    height: auto;
+    border-radius: 25px;
+    margin: 2% 3%;
+    background: var(--secondary);
+    text-align: center;
+}
+.left_panel_top {
+    /* height: 12%; */
+}
+.left_panel_middle {
+    display: flex;
+    height: 50%;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.left_panel_bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.main_panel {
+    width: 93%;
+    height: auto;
+}
+
+.nav_icons {
+    font-size: 40px !important;
+    color: var(--white);
+    padding: 15px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.nav_icons:hover {
+    opacity: 0.5;
+}
+.create {
+    color: var(--green);
+}
+.update {
+    color: var(--yellow);
+}
+.delete {
+    color: var(--red);
+}

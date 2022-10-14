@@ -7,13 +7,9 @@
 
     --black:        #151515;
     --white:        #ffffff;
-    --green:        #008000;   
-    /* --green_lighter: */
+    --green:        #008000;  
     --yellow:       #ffa500;
-    /* --yellow_lighter:  */
     --red:          #dc143c;
-    /* --red_lighter:       */
-    /* --purple:    */
 }
 * {
     margin: 0;
@@ -47,9 +43,8 @@ hr {
     width: 7%;
     height: auto;
     border-radius: 25px;
-    margin: 1% 0 1% 1%;
+    margin: 1% 0;
     padding-top: 15px;
-    /* background: var(--red); */
     text-align: center;
 }
 .left_panel_top {
@@ -57,6 +52,7 @@ hr {
 }
 .left_panel_middle .nav_icons {
     margin: 7px 0;
+    width: 100%;
 }
 .left_panel_bottom {
     display: flex;
@@ -67,7 +63,7 @@ hr {
 .main_panel {
     width: 93%;
     height: auto;
-    margin: 1%;
+    margin: 1% 1% 1% 0;
     background: var(--background);
     border-radius: 25px;
     padding: 2%;
@@ -81,14 +77,15 @@ hr {
     transition: 0.4s;
 }
 .home_icon {
-    background: white;
-    color: black;
+    background: var(--white);
+    color: var(--black);
     border-radius: 20px;
 }
 .nav_icons:hover {
-    /* border-radius: 50px;
-    background: #008000; */
     opacity: 0.5;
+}
+.selected {
+    border-left: 2px solid var(--white);
 }
 .create {
     color: var(--green);

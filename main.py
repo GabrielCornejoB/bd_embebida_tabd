@@ -7,12 +7,17 @@ eel.init(os.path.dirname(os.path.realpath(__file__)) + "\\web")
 
 @eel.expose
 def select(table_name):
-    conn = sql.connect("pescasDB.sqlite")
-    cursor = conn.cursor()
-
-    query = cursor.execute("SELECT * FROM " + table_name)
-
-    conn.close()
+    if(table_name.isalpha()):
+        conn = sql.connect("pescasDB.sqlite")
+        cursor = conn.cursor()
+        rows = cursor.execute("SELECT * FROM " + table_name).fetchall()
+        conn.close()
+        if(len(rows) > 0):
+            return json.dumps(rows, ensure_ascii=False).encode('utf-8').decode()
+        else:
+            return "[err] Query returned 0 rows"
+    else:
+        return "[err] Table name must be alphabetic only"
 
 
 eel.start("index.html")

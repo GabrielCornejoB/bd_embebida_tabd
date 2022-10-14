@@ -1,6 +1,6 @@
-let file_name = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
-let table_name = file_name.slice(0, -5);
-console.log(table_name);
+// let file_name = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+// let table_name = file_name.slice(0, -5);
+// console.log(table_name);
 
 window.onload = function () {
     eel.select(table_name)(load_table);

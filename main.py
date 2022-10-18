@@ -2,8 +2,10 @@ import eel
 import os
 import json
 import sqlite3 as sql
+import sys
 
-eel.init(os.path.dirname(os.path.realpath(__file__)) + "\\web")
+# eel.init(os.path.dirname(os.path.realpath(__file__)) + "\\web")
+eel.init("web")
 
 @eel.expose
 def select(table_name):
@@ -19,5 +21,8 @@ def select(table_name):
     else:
         return "[err] Table name must be alphabetic only"
 
+# @eel.expose
+# def exit_eel():
+#     sys.exit()
 
 eel.start("index.html")

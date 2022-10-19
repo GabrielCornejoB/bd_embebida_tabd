@@ -67,59 +67,22 @@ hr {
     margin: 1% 1% 1% 0;
     background: var(--background);
     border-radius: 25px;
-    padding: 2%;
-    display: flex;
-    flex-direction: row;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: 70% calc(30% - 25px);
+    gap: 25px;
 }
-.main_panel_left {
-    height: 100%;
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.info {
-    height: 35%;
-    width: 100%;
-    background: var(--gray);
+
+.card {
     border-radius: 20px;
-    border: 2px solid var(--black);
-    margin: 0 auto;
+    background: var(--gray);
 }
 .table {
-    height: 62%;
-    width: 100%;
-    background: var(--gray);
-    border-radius: 20px;
-    border: 2px solid var(--black);
-    margin: 0 auto;
+    grid-row-start: 2;
+    grid-row-end: 4;
 }
-.main_panel_right {
-    height: 100%;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.crud {
-    background: var(--gray);
-    width: 95%;
-    margin: 0 0 0 5%;
-    border-radius: 20px;
-    border: 2px solid var(--black);
-}
-.create {
-    height: 35%;
-    /* border: 2px solid var(--green); */
-}
-.update {
-    height: 40%;
-    /* border: 2px solid var(--yellow); */
-}
-.delete {
-    height: 20%;
-    /* border: 2px solid var(--red); */
-}
+
+
 
 .nav_icons {
     font-size: 25px !important;

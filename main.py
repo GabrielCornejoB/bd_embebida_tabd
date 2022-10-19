@@ -21,8 +21,4 @@ def select(table_name):
     else:
         return "[err] Table name must be alphabetic only"
 
-# @eel.expose
-# def exit_eel():
-#     sys.exit()
-
-eel.start("index.html")
+eel.start("index.html", size=(1080, 720))

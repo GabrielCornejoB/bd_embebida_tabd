@@ -234,3 +234,13 @@ h1 {
     background: var(--gray);
 }
 /* ------------------------------------------------- */
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background:#80808062;
+}

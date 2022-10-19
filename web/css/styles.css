@@ -9,6 +9,7 @@
     --white:        #ffffff;
     --gray:         #d6dfed;
     --gray_2:       #e5eefd;
+    --gray_3:       #808080;
     --green:        #008000;  
     --yellow:       #ffa500;
     --red:          #dc143c;
@@ -31,6 +32,9 @@ hr {
     margin: 0 7px;
     border: none;
 }
+h1 {
+    font-size: 45px;
+}
 
 .panel {
     display: flex;
@@ -40,6 +44,8 @@ hr {
     vertical-align: middle;
     background: var(--black);
 }
+
+/* Left panel */
 .left_panel {
     display: flex;
     flex-direction: column;
@@ -65,6 +71,26 @@ hr {
     justify-content: space-evenly;
     padding-bottom: 15px;
 }
+.nav_icons {
+    font-size: 25px !important;
+    color: var(--white);
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.home_icon {
+    background: var(--white);
+    color: var(--black);
+    border-radius: 20px;
+}
+.nav_icons:hover {
+    opacity: 0.5;
+}
+.selected {
+    border-left: 2px solid var(--white);
+}
+/* --------------------------------------- */
+
 .main_panel {
     width: 93%;
     height: auto;
@@ -74,15 +100,114 @@ hr {
     padding: 25px;
     display: grid;
     grid-template-columns: 70% calc(30% - 25px);
-    grid-template-rows: minmax(30%,auto) minmax(30%,auto) minmax(30%,auto);
+    grid-template-rows: 31% 31% 31%;
     gap: 25px;
 }
 
+/* Cards */
 .card {
     border-radius: 20px;
     background: var(--gray);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
 }
+/* .cuencas {
+    background: url("../imgs/lake.jpg") no-repeat 50% 50%;
+    background-size: cover;
+} */
+.card h2 {
+    margin-bottom: 15px;
+}
+.card_title {
+    height: 15%;
+    width: 100%;
+    text-align: center;
+}
+.card_content {
+    height: 85%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.inputs {
+    height: 100%;
+    width: 85%;
+    overflow-y:auto;
+}
+.inputs input, .inputs select {
+    outline: none;
+    font-size: 18px;
+    padding: 7px 10px;
+    border-radius: 15px;
+    border: none;
+    width: 100%;
+}
+.inputs input::placeholder {
+    opacity: 0.5;
+}
+.input_wrapper {
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+.input_wrapper p {
+    color: var(--gray_3);
+    text-align: left;
+    font-size: 15px;
+    padding-left: 7px;
+} 
+
+
+.submit {
+    height: 100%;
+    width: 15%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.submit span {
+    width: fit-content;
+    align-self: center;
+    color: white;
+    border-radius: 50px;
+    padding: 4px;
+    transition: 0.4s;
+}
+.submit span:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.create span {
+    font-size: 40px;
+    background: var(--green);
+}
+.update span {
+    font-size: 30px;
+    padding: 9px;
+    background: var(--yellow);
+}
+.delete span {
+    font-size: 30px;
+    padding: 9px;
+    background: var(--red);
+}
+.create h2 {
+    color: var(--green);
+}
+.update h2 {
+    color: var(--yellow);
+}
+.delete h2 {
+    color: var(--red);
+}
+
+/* -------------------------------------------------- */
+
+/* Table */
 .table {
     grid-row-start: 2;
     grid-row-end: 4;
@@ -108,31 +233,4 @@ hr {
 .content_table tbody tr:nth-of-type(even) {
     background: var(--gray);
 }
-
-.nav_icons {
-    font-size: 25px !important;
-    color: var(--white);
-    padding: 10px;
-    cursor: pointer;
-    transition: 0.4s;
-}
-.home_icon {
-    background: var(--white);
-    color: var(--black);
-    border-radius: 20px;
-}
-.nav_icons:hover {
-    opacity: 0.5;
-}
-.selected {
-    border-left: 2px solid var(--white);
-}
-.create {
-    color: var(--green);
-}
-.update {
-    color: var(--yellow);
-}
-.delete {
-    color: var(--red);
-}
+/* ------------------------------------------------- */

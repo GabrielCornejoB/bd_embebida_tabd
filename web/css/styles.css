@@ -8,14 +8,17 @@
     --black:        #151515;
     --white:        #ffffff;
     --gray:         #d6dfed;
+    --gray_2:       #e5eefd;
     --green:        #008000;  
     --yellow:       #ffa500;
     --red:          #dc143c;
+    --blue:         #5500ff;
 }
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 html, body {
     height: 100%;
@@ -28,6 +31,7 @@ hr {
     margin: 0 7px;
     border: none;
 }
+
 .panel {
     display: flex;
     flex-direction: row;
@@ -70,19 +74,42 @@ hr {
     padding: 25px;
     display: grid;
     grid-template-columns: 70% calc(30% - 25px);
+    grid-template-rows: minmax(30%,auto) minmax(30%,auto) minmax(30%,auto);
     gap: 25px;
 }
 
 .card {
     border-radius: 20px;
     background: var(--gray);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    /* height: 100%; */
 }
 .table {
+    /* height: 60%; */
     grid-row-start: 2;
     grid-row-end: 4;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+.content_table {
+    border-collapse: collapse;
+    font-size: 18px;
+    width: 100%;
+}
+.content_table thead tr {
+    background: var(--blue);
+    font-weight: bold;
+    color: white;
+    text-align: left;
+}
+.content_table th, .content_table td {
+    padding: 12px 15px;
 }
 
-
+.content_table tbody tr:nth-of-type(even) {
+    background: var(--gray);
+}
 
 .nav_icons {
     font-size: 25px !important;

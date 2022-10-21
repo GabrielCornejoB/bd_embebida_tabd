@@ -212,7 +212,7 @@ h1 {
     grid-row-start: 2;
     grid-row-end: 4;
     border-radius: 20px;
-    overflow: hidden;
+    overflow-y:auto;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 }
 .content_table {

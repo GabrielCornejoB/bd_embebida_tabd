@@ -27,3 +27,18 @@ else if (table_name === "metodos") {
 else if (table_name === "cuencas") {
     document.getElementById("cuencas_nav").classList.toggle("selected");
 }
+
+function write_error (error_msg) {
+    console.log("write_error() called");
+    alert(error_msg);
+    document.location.href = "index.html";
+}
+function write_msg (msg) {
+    console.log("write_msg() called");
+    alert(msg);
+}
+function clean_fields() {
+    console.log("clean_fields() called");
+    inputs = document.getElementsByClassName("crud_input");
+    for (let i of inputs) { i.value=""; }
+}

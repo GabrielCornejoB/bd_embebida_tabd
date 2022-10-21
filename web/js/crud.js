@@ -1,15 +1,15 @@
+function update_table () {
+    console.log("update_table() called");
+    eel.select(table_name)(load_table);
+}
+
 window.onload = function () {
     eel.select(table_name)(load_table);
 }
 
-function write_error (error_msg) {
-    alert(error_msg);
-    document.location.href = "index.html";
-}
-
+// READ
 function load_table (output) {
-    console.log("load_table() called");
-    console.log(output)
+    console.log("READ");
     parsed_output = JSON.parse(output);
 
     if (typeof parsed_output === 'string' && parsed_output.startsWith("[ERROR]")) {
@@ -33,4 +33,23 @@ function load_table (output) {
     }
     table_string = table_string.concat("</tbody>");
     document.getElementById("data").innerHTML = table_string;
+}
+
+//CREATE
+document.querySelector(".crud_create").onclick = function() {
+    console.log("CREATE");
+    create_arg_1 = document.getElementById("create_arg_1").value;
+    clean_fields();
+    console.log(create_arg_1);
+    eel.create("cuencas", [create_arg_1]);
+
+    // if (typeof parsed_output === 'string' && parsed_output.startsWith("[ERROR]")) {
+    //     write_error(parsed_output);
+    //     return
+    // }
+    // else if (typeof parsed_output === 'string' && parsed_output.startsWith("[MSG]")) {
+    //     write_msg(parsed_output);
+    //     return
+    // }
+    update_table();
 }

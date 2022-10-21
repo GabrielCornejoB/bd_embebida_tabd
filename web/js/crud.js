@@ -1,9 +1,22 @@
 window.onload = function () {
     eel.select(table_name)(load_table);
 }
+
+function write_error (error_msg) {
+    alert(error_msg);
+    document.location.href = "index.html";
+}
+
 function load_table (output) {
     console.log("load_table() called");
+    console.log(output)
     parsed_output = JSON.parse(output);
+
+    if (typeof parsed_output === 'string' && parsed_output.startsWith("[ERROR]")) {
+        write_error(parsed_output);
+        return
+    }
+
     string_table = "";
     if (table_name === "cuencas" || table_name === "metodos") {
         if (table_name === "cuencas") {

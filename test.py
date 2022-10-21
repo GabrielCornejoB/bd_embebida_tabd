@@ -51,15 +51,16 @@ def create(table_name, args):
         if not check_args(args):
             raise Exception("Invalid arg(s)!")
         
-        if (table_name == "cuencas" or table_name == "metodos"):
+        if table_name == "cuencas" or table_name == "metodos":
             if len(args) != 1:
-                raise Exception("Table \"" + table_name + "\" needs exactly 1 argument!")
+                raise Exception("Create on table \"" + table_name + "\" needs exactly 1 argument!")
             else:
                 query_end = " (cuenca) VALUES (?)" if table_name=="cuencas" else " (metodo) VALUES (?)"
 
-        if (table_name == "pescas"):
+        if table_name == "pescas":
+            # [0:id_cuenca, 1:id_metodo, 2:fecha, 3:peso_total_pesca]
             if len(args) != 4:
-                raise Exception("Table \"pescas\" needs exactly 4 arguments!")
+                raise Exception("Create on table \"pescas\" needs exactly 4 arguments!")
             else:
                 try:
                     args[0] = int(args[0])
@@ -85,6 +86,54 @@ def create(table_name, args):
     else:
         print("Entry created succesfully!")
 
+def update(table_name, args):
+    try:
+        table_name = table_name.lower()
+        id_name = "id_" + table_name[:-1]
+        query_end = ""
+
+        if not table_name in valid_tables:
+            raise Exception("Invalid table name!")
+        if not check_args(args):
+            raise Exception("Invalid arg(s)!")
+        if not check_existence(args[-1], table_name, id_name):
+            raise Exception("Invalid Id!")
+
+        if table_name == "cuencas" or table_name == "metodos":
+            # [0:cuenca, 1:id_cuenca] or [0:metodo, 1:id_metodo]
+            if len(args) != 2:
+                raise Exception("Update on \"" + table_name + "\" needs exactly 2 arguments!")
+            else:
+                query_end = "cuenca=(?) WHERE id_cuenca=(?)" if table_name=="cuencas" else "metodo=(?) WHERE id_metodo=(?)"
+        if table_name == "pescas":
+            # [0:id_cuenca, 1:id_metodo, 2:fecha, 3:peso_total_pesca, 4:id_pesca]
+            if len(args) != 5:
+                raise Exception("Update on \"pescas\" needs exactly 5 arguments!")
+            else:
+                try:
+                    args[0] = int(args[0])
+                    args[1] = int(args[1])
+                    args[3] = float(args[3])
+                    args[4] = int(args[4])
+                except:
+                    raise Exception("Args have invalid types!")
+                if not check_existence(args[0], "cuencas", "id_cuenca"):
+                    raise Exception("Arg #1 doesn't exist in cuencas")
+                if not check_existence(args[1], "metodos", "id_metodo"):
+                    raise Exception("Arg #2 doesn't exist in metodos")
+                query_end = "id_cuenca=(?), id_metodo=(?), fecha_pesca=(?), peso_total_pesca=(?) WHERE id_pesca=(?)"
+
+        conn = sql.connect(db)
+        cursor = conn.cursor()
+        query = "UPDATE " + table_name + " SET " + query_end
+        cursor.execute(query, args)
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        print('ERROR:',e)
+    else:
+        print("Entry updated succesfully!")
+
 def delete(table_name, entry_id):
     try:
         table_name = table_name.lower()
@@ -109,5 +158,3 @@ def delete(table_name, entry_id):
         print("ERROR:",e)
     else:
         print("Entry deleted succesfully!")
-
-delete("metodos", "2")

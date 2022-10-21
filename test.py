@@ -12,11 +12,10 @@ def check_args(args):
                 return True
     return False
 
-def check_fk(val, table):
+def check_existence(val, table, column):
     conn = sql.connect(db)
     cursor = conn.cursor()
-    id_name = "id_" + table[:-1]
-    query = "SELECT * FROM " + table + " WHERE " + id_name + "=(?)"
+    query = "SELECT * FROM " + table + " WHERE " + column + "=(?)"
     rows = cursor.execute(query, [val]).fetchall()
     if(len(rows) > 0):
         return True
@@ -68,9 +67,9 @@ def create(table_name, args):
                     args[3] = float(args[3])
                 except:
                     raise Exception("Args have invalid types")
-                if not check_fk(args[0], "cuencas"):
+                if not check_existence(args[0], "cuencas", "id_cuenca"):
                     raise Exception("Arg #1 doesn't exist in cuencas")
-                if not check_fk(args[1], "metodos"):
+                if not check_existence(args[1], "metodos", "id_metodo"):
                     raise Exception("Arg #2 doesn't exist in metodos")
                 query_end = " (id_cuenca, id_metodo, fecha_pesca, peso_total_pesca) VALUES (?, ?, ?, ?)"
         
@@ -86,3 +85,29 @@ def create(table_name, args):
     else:
         print("Entry created succesfully!")
 
+def delete(table_name, entry_id):
+    try:
+        table_name = table_name.lower()
+        id_name = "id_" + table_name[:-1]
+        if not table_name in valid_tables:
+            raise Exception("Invalid table name!")
+        if not check_existence(entry_id, table_name, id_name):
+            raise Exception("Invalid Id!")
+        if (table_name == "cuencas") and check_existence(entry_id, "pescas", "id_cuenca"):
+            raise Exception("Cuenca #" + entry_id + " is being used in table pescas!")
+        if (table_name == "metodos") and check_existence(entry_id, "pescas", "id_metodo"):
+            raise Exception("Metodo #" + entry_id + " is being used in table pescas!")
+
+        conn = sql.connect(db)
+        cursor = conn.cursor()
+        
+        query = "DELETE FROM " + table_name + " WHERE " + id_name + "=(?)"
+        cursor.execute(query, [entry_id])
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        print("ERROR:",e)
+    else:
+        print("Entry deleted succesfully!")
+
+delete("metodos", "2")

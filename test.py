@@ -140,6 +140,8 @@ def delete(table_name, entry_id):
         id_name = "id_" + table_name[:-1]
         if not table_name in valid_tables:
             raise Exception("Invalid table name!")
+        if not check_args([entry_id]):
+            raise Exception("Invalid arg!")
         if not check_existence(entry_id, table_name, id_name):
             raise Exception("Invalid Id!")
         if (table_name == "cuencas") and check_existence(entry_id, "pescas", "id_cuenca"):

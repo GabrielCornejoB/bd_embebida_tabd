@@ -38,6 +38,7 @@ function load_table (output) {
     table_string = table_string.concat("</tbody>");
     document.getElementById("data").innerHTML = table_string;
     document.getElementById("update_select").innerHTML = select_string;
+    document.getElementById("delete_select").innerHTML = select_string;
 }
 
 //CREATE
@@ -70,6 +71,24 @@ function update_register(output) {
     clean_fields();
     parsed_output = JSON.parse(output);
     if (parsed_output.startsWith("[ERROR]")) {
+        write_error(parsed_output);
+        return
+    }
+    else if (parsed_output.startsWith("[MSG]")) {
+        write_msg(parsed_output);
+        update_table();
+    }
+}
+
+document.querySelector(".crud_delete").onclick = function() {
+    delete_arg_1 = document.getElementById("delete_select").value;
+    eel.delete(table_name, delete_arg_1)(delete_register);
+}
+function delete_register(output) {
+    console.log("DELETE");
+    clean_fields();
+    parsed_output = JSON.parse(output);
+    if (parsed_output.startsWith("[ERROR")) {
         write_error(parsed_output);
         return
     }

@@ -144,4 +144,32 @@ def update(table_name, args):
     else:
         return jsonize("[MSG] Entry updated succesfully!")
 
+@eel.expose
+def delete(table_name, arg):
+    try:
+        table_name = table_name.lower()
+        id_name = "id_" + table_name[:-1]
+        if not table_name in valid_tables:
+            return jsonize("[ERROR] Invalid table name!")
+        if not check_args([arg]):
+            return jsonize("[ERROR] Invalid arg!")
+        if not check_existence(arg, table_name, id_name):
+            return jsonize("[ERROR] Invalid Id!")
+        if (table_name == "cuencas") and check_existence(arg, "pescas", "id_cuenca"):
+            return jsonize("[ERROR] Cuenca #" + arg + " is being used in table pescas!")
+        if (table_name == "metodos") and check_existence(arg, "pescas", "id_metodo"):
+            return jsonize("[ERROR] Metodo #" + arg + " is being used in table pescas!")
+
+        conn = sql.connect(db)
+        cursor = conn.cursor()
+        
+        query = "DELETE FROM " + table_name + " WHERE " + id_name + "=(?)"
+        cursor.execute(query, [arg])
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        return jsonize("[ERROR] " + e)
+    else:
+        return jsonize("[MSG] Entry deleted succesfully!")
+
 eel.start("index.html", cmdline_args=['--start-fullscreen'])

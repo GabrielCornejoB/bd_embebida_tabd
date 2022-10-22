@@ -102,9 +102,24 @@ function add_register(output) {
 
 // UPDATE
 document.querySelector(".crud_update").onclick = function() {
+    l_args = [];
     update_arg_1 = document.getElementById("update_arg_1").value;
-    update_arg_2 = document.getElementById("update_select").value;
-    eel.update(table_name, [update_arg_1, update_arg_2])(update_register);
+    l_args.push(update_arg_1);
+    if (table_name === "cuencas" || table_name === "metodos") {
+        update_arg_2 = document.getElementById("update_select").value;
+        l_args.push(update_arg_2);
+    }
+    else if (table_name === "pescas") {
+        update_arg_2 = document.getElementById("update_arg_2").value;
+        update_arg_3 = document.getElementById("update_arg_3").value;
+        update_arg_4 = document.getElementById("update_arg_4").value;
+        update_arg_5 = document.getElementById("update_select").value;
+        l_args.push(update_arg_2);
+        l_args.push(update_arg_3);
+        l_args.push(update_arg_4);
+        l_args.push(update_arg_5);
+    }
+    eel.update(table_name, l_args)(update_register);
 }
 function update_register(output) {
     console.log("UPDATE");

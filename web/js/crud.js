@@ -43,10 +43,30 @@ function load_table (output) {
 //CREATE
 document.querySelector(".crud_create").onclick = function() {
     create_arg_1 = document.getElementById("create_arg_1").value;
-    eel.create("cuencas", [create_arg_1])(add_register);    
+    eel.create(table_name, [create_arg_1])(add_register);    
 }
 function add_register(output) {
     console.log("CREATE");
+    clean_fields();
+    parsed_output = JSON.parse(output);
+    if (parsed_output.startsWith("[ERROR]")) {
+        write_error(parsed_output);
+        return
+    }
+    else if (parsed_output.startsWith("[MSG]")) {
+        write_msg(parsed_output);
+        update_table();
+    }
+}
+
+// UPDATE
+document.querySelector(".crud_update").onclick = function() {
+    update_arg_1 = document.getElementById("update_arg_1").value;
+    update_arg_2 = document.getElementById("update_select").value;
+    eel.update(table_name, [update_arg_1, update_arg_2])(update_register);
+}
+function update_register(output) {
+    console.log("UPDATE");
     clean_fields();
     parsed_output = JSON.parse(output);
     if (parsed_output.startsWith("[ERROR]")) {

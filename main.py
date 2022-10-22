@@ -13,9 +13,9 @@ eel.init("web")
 def check_args(args):
     if (type(args) is list) and len(args) > 0:
         for a in args:
-            if (a and (type(a) is str) and (not a.isspace())):
-                return True
-    return False
+            if (not a or (not type(a) is str) or (a.isspace())):
+                return False
+    return True
 
 def check_existence(val, table, column):
     conn = sql.connect(db)
@@ -94,5 +94,54 @@ def create(table_name, args):
         return jsonize("[ERROR] " + str(e))
     else:
         return jsonize("[MSG] Entry created succesfully! :)")
+
+@eel.expose
+def update(table_name, args):
+    try:
+        table_name = table_name.lower()
+        id_name = "id_" + table_name[:-1]
+        query_end = ""
+
+        if not table_name in valid_tables:
+            return jsonize("[ERROR] Invalid table name!")
+        if not check_args(args):
+            return jsonize("[ERROR] Invalid arg(s)!")
+        if not check_existence(args[-1], table_name, id_name):
+            return jsonize("[ERROR] Invalid Id!")
+
+        if table_name == "cuencas" or table_name == "metodos":
+            # [0:cuenca, 1:id_cuenca] or [0:metodo, 1:id_metodo]
+            if len(args) != 2:
+                return jsonize("[ERROR] Update on \"" + table_name + "\" needs exactly 2 arguments!")
+            else:
+                query_end = "cuenca=(?) WHERE id_cuenca=(?)" if table_name=="cuencas" else "metodo=(?) WHERE id_metodo=(?)"
+        if table_name == "pescas":
+            # [0:id_cuenca, 1:id_metodo, 2:fecha, 3:peso_total_pesca, 4:id_pesca]
+            if len(args) != 5:
+                return jsonize("[ERROR] Update on \"pescas\" needs exactly 5 arguments!")
+            else:
+                try:
+                    args[0] = int(args[0])
+                    args[1] = int(args[1])
+                    args[3] = float(args[3])
+                    args[4] = int(args[4])
+                except:
+                    return jsonize("[ERROR] Args have invalid types!")
+                if not check_existence(args[0], "cuencas", "id_cuenca"):
+                    return jsonize("[ERROR] Arg #1 doesn't exist in cuencas")
+                if not check_existence(args[1], "metodos", "id_metodo"):
+                    return jsonize("[ERROR] Arg #2 doesn't exist in metodos")
+                query_end = "id_cuenca=(?), id_metodo=(?), fecha_pesca=(?), peso_total_pesca=(?) WHERE id_pesca=(?)"
+            
+        conn = sql.connect(db)
+        cursor = conn.cursor()
+        query = "UPDATE " + table_name + " SET " + query_end
+        cursor.execute(query, args)
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        return jsonize('[ERROR]:' + e)
+    else:
+        return jsonize("[MSG] Entry updated succesfully!")
 
 eel.start("index.html", cmdline_args=['--start-fullscreen'])

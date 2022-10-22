@@ -56,31 +56,31 @@ def create(table_name, args):
         query_end = ""
 
         if not table_name in valid_tables:
-            return "[ERROR] Invalid table name!"
+            return jsonize("[ERROR] Invalid table name!")
         if not check_args(args):
-            return "[ERROR] Invalid arg(s)!"
+            return jsonize("[ERROR] Invalid arg(s)!")
         
         if table_name == "cuencas" or table_name == "metodos":
             if len(args) != 1:
-                return "[ERROR] Create on table \"" + table_name + "\" needs exactly 1 argument!"
+                return jsonize("[ERROR] Create on table \"" + table_name + "\" needs exactly 1 argument!")
             else:
                 query_end = " (cuenca) VALUES (?)" if table_name=="cuencas" else " (metodo) VALUES (?)"
 
         if table_name == "pescas":
             # [0:id_cuenca, 1:id_metodo, 2:fecha, 3:peso_total_pesca]
             if len(args) != 4:
-                return "[ERROR] Create on table \"pescas\" needs exactly 4 arguments!"
+                return jsonize("[ERROR] Create on table \"pescas\" needs exactly 4 arguments!")
             else:
                 try:
                     args[0] = int(args[0])
                     args[1] = int(args[1])
                     args[3] = float(args[3])
                 except:
-                    return "[ERROR] Args have invalid types"
+                    return jsonize("[ERROR] Args have invalid types")
                 if not check_existence(args[0], "cuencas", "id_cuenca"):
-                    return "[ERROR] Arg #1 doesn't exist in cuencas"
+                    return jsonize("[ERROR] Arg #1 doesn't exist in cuencas")
                 if not check_existence(args[1], "metodos", "id_metodo"):
-                    return "[ERROR] Arg #2 doesn't exist in metodos"
+                    return jsonize("[ERROR] Arg #2 doesn't exist in metodos")
                 query_end = " (id_cuenca, id_metodo, fecha_pesca, peso_total_pesca) VALUES (?, ?, ?, ?)"
         
         conn = sql.connect(db)
@@ -91,8 +91,8 @@ def create(table_name, args):
 
         conn.close()
     except Exception as e:
-        return "[ERROR] " + str(e)
+        return jsonize("[ERROR] " + str(e))
     else:
-        return "[MSG] Entry created succesfully! :)"
+        return jsonize("[MSG] Entry created succesfully! :)")
 
 eel.start("index.html", size=(1080, 720))

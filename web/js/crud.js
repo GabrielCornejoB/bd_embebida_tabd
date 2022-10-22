@@ -37,19 +37,19 @@ function load_table (output) {
 
 //CREATE
 document.querySelector(".crud_create").onclick = function() {
-    console.log("CREATE");
     create_arg_1 = document.getElementById("create_arg_1").value;
+    eel.create("cuencas", [create_arg_1])(add_register);    
+}
+function add_register(output) {
+    console.log("CREATE");
     clean_fields();
-    console.log(create_arg_1);
-    eel.create("cuencas", [create_arg_1]);
-
-    // if (typeof parsed_output === 'string' && parsed_output.startsWith("[ERROR]")) {
-    //     write_error(parsed_output);
-    //     return
-    // }
-    // else if (typeof parsed_output === 'string' && parsed_output.startsWith("[MSG]")) {
-    //     write_msg(parsed_output);
-    //     return
-    // }
-    update_table();
+    parsed_output = JSON.parse(output);
+    if (parsed_output.startsWith("[ERROR]")) {
+        write_error(parsed_output);
+        return
+    }
+    else if (parsed_output.startsWith("[MSG]")) {
+        write_msg(parsed_output);
+        update_table();
+    }
 }

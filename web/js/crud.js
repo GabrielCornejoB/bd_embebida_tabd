@@ -5,6 +5,35 @@ function update_table () {
 
 window.onload = function () {
     eel.select(table_name)(load_table);
+    if (table_name === "pescas") {
+        eel.select("metodos")(load_select_met);
+        eel.select("cuencas")(load_select_cue);
+    }
+}
+
+function load_select_met (output) {
+    parsed_output = JSON.parse(output);
+    if (typeof parsed_output === 'string' && parsed_output.startsWith("[ERROR]")) {
+        write_error(parsed_output);
+        return
+    }
+    const zeroPad = (num, places) => String(num).padStart(places, '0');
+    select_string = "<option disabled selected value style'color:#cfcfcf59'>---</option>";
+    parsed_output.forEach(row => select_string = select_string.concat("<option value='", row[0], "'>", zeroPad(row[0],2), " - ", row[1], "</option>"));
+    document.getElementById("create_arg_2").innerHTML = select_string;
+    document.getElementById("update_arg_2").innerHTML = select_string;
+}
+function load_select_cue (output) {
+    parsed_output = JSON.parse(output);
+    if (typeof parsed_output === 'string' && parsed_output.startsWith("[ERROR]")) {
+        write_error(parsed_output);
+        return
+    }
+    const zeroPad = (num, places) => String(num).padStart(places, '0');
+    select_string = "<option disabled selected value style'color:#cfcfcf59'>---</option>";
+    parsed_output.forEach(row => select_string = select_string.concat("<option value='", row[0], "'>", zeroPad(row[0],2), " - ", row[1], "</option>"));
+    document.getElementById("create_arg_1").innerHTML = select_string;
+    document.getElementById("update_arg_1").innerHTML = select_string;
 }
 
 // READ
@@ -43,8 +72,19 @@ function load_table (output) {
 
 //CREATE
 document.querySelector(".crud_create").onclick = function() {
+    l_args = []
     create_arg_1 = document.getElementById("create_arg_1").value;
-    eel.create(table_name, [create_arg_1])(add_register);    
+    l_args.push(create_arg_1);
+
+    if (table_name === "pescas") {
+        create_arg_2 = document.getElementById("create_arg_2").value;
+        create_arg_3 = document.getElementById("create_arg_3").value;
+        create_arg_4 = document.getElementById("create_arg_4").value;
+        l_args.push(create_arg_2);
+        l_args.push(create_arg_3);
+        l_args.push(create_arg_4);
+    }
+    eel.create(table_name, l_args)(add_register);    
 }
 function add_register(output) {
     console.log("CREATE");

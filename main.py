@@ -95,4 +95,4 @@ def create(table_name, args):
     else:
         return jsonize("[MSG] Entry created succesfully! :)")
 
-eel.start("index.html", size=(1080, 720))
+eel.start("index.html", cmdline_args=['--start-fullscreen'])

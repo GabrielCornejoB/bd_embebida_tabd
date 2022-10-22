@@ -4,7 +4,6 @@ function update_table () {
 }
 
 window.onload = function () {
-    document.body.style.zoom = "80%";
     eel.select(table_name)(load_table);
 }
 

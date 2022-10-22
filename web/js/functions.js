@@ -37,7 +37,7 @@ function write_msg (msg) {
     console.log("write_msg() called");
     alert(msg);
 }
-function clean_fields() {
+function clean_fields () {
     console.log("clean_fields() called");
     inputs = document.getElementsByClassName("crud_input");
     for (let i of inputs) { i.value=""; }

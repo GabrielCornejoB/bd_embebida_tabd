@@ -80,6 +80,7 @@ function update_register(output) {
     }
 }
 
+// DELETE
 document.querySelector(".crud_delete").onclick = function() {
     delete_arg_1 = document.getElementById("delete_select").value;
     eel.delete(table_name, delete_arg_1)(delete_register);

@@ -31,7 +31,6 @@ else if (table_name === "cuencas") {
 function write_error (error_msg) {
     console.log("write_error() called");
     alert(error_msg);
-    document.location.href = "index.html";
 }
 function write_msg (msg) {
     console.log("write_msg() called");
@@ -40,5 +39,7 @@ function write_msg (msg) {
 function clean_fields () {
     console.log("clean_fields() called");
     inputs = document.getElementsByClassName("crud_input");
+    selects = document.getElementsByClassName("crud_select");
     for (let i of inputs) { i.value=""; }
+    for (let i of selects) { i.value=""; }
 }

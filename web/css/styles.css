@@ -32,6 +32,10 @@ hr {
     margin: 0 7px;
     border: none;
 }
+th {
+    position: sticky;
+    top: 0;
+}
 h1 {
     font-size: 45px;
 }
@@ -215,12 +219,13 @@ h1 {
     overflow-y:auto;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 }
+
 .content_table {
     border-collapse: collapse;
     font-size: 18px;
     width: 100%;
 }
-.content_table thead tr {
+.content_table thead tr th{
     background: var(--blue);
     font-weight: bold;
     color: white;
@@ -237,10 +242,5 @@ h1 {
 
 
 ::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 25px;
-    background:#80808062;
+    display: none;
 }

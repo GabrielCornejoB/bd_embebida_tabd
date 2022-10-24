@@ -95,6 +95,57 @@ h1 {
 }
 /* --------------------------------------- */
 
+/* INDEX */
+
+.index_panel {
+    width: 93%;
+    height: auto;
+    margin: 1% 1% 1% 0;
+    background: var(--background);
+    border-radius: 25px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.index_title {
+    background: rebeccapurple;
+    height: 15%;
+}
+.index_cards {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    height: 30%;
+}
+.index_card {
+    height: 100%;
+    width: calc((100% - 75px) / 4);
+    background: #353B55;
+}
+.index_view {
+    display: grid;
+    gap: 25px;
+    grid-template-columns: 20% calc(80% - 25px);
+    height: calc(55% - 50px);
+    
+}
+.view_title {
+    background: #dc143c;
+}
+.view_count {
+    background: blue;
+}
+.view_table {
+    background: #151515;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1; 
+    grid-row-end: 3;
+}
+
+/* ------------------------------- */
+
 .main_panel {
     width: 93%;
     height: auto;
@@ -117,10 +168,7 @@ h1 {
     display: flex;
     flex-direction: column;
 }
-/* .cuencas {
-    background: url("../imgs/lake.jpg") no-repeat 50% 50%;
-    background-size: cover;
-} */
+
 .card h2 {
     margin-bottom: 15px;
 }

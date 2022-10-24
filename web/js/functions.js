@@ -47,3 +47,7 @@ function new_window (url) {
     window.open(url);
 }
 
+function toggle_popup(popup_id) {
+    document.getElementById(popup_id).classList.toggle('active');
+    document.getElementById("overlay").classList.toggle('active');
+}

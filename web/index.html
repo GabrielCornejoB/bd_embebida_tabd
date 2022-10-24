@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 </head>
 <body>
+    <div class="popup" id="popup_tutorial">
+        <div class="popup_header">
+            <div class="title">Título</div>
+            <button class="close_btn" onclick="toggle_popup('popup_tutorial')">&times;</button>
+        </div>
+        <div class="popup_body">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus, accusamus reiciendis quos officiis laudantium quidem cumque magnam ipsam esse, assumenda aut! Consequuntur consequatur debitis temporibus, neque perspiciatis provident exercitationem reiciendis ut autem placeat. Aliquam eaque minima quas eligendi, dignissimos voluptatibus architecto ullam consectetur. Incidunt perspiciatis animi eveniet temporibus nihil voluptatibus assumenda, eligendi ipsa numquam repellat ex, omnis quas? Fugiat architecto placeat quis minima voluptatem ex. Iusto laboriosam provident doloribus voluptatum quod ex quo iste omnis enim nobis in, repellendus adipisci?
+        </div>
+    </div>
+    <div id="overlay"></div>
+
     <div class="panel">
         <div class="left_panel" id="nav">
             
@@ -21,7 +32,7 @@
                 <div class="index_card index_box" title="Sitio web de la AUNAP" onclick="new_window('https://www.aunap.gov.co/')">
                     <img src="icons/AUNAP248X107.svg" style="width: 90%; height: auto;">
                 </div>
-                <div class="index_card index_box">
+                <div class="index_card index_box" onclick="toggle_popup('popup_tutorial')"> 
                     <!-- Tutorial / Como usar / Como empezar / Instrucciones / Icono que dice lo anterior (aun no me decido) -->
                     <h3>Tutorial</h3>
                 </div>

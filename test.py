@@ -1,9 +1,14 @@
 import sqlite3 as sql
 import json
 import sys
+from datetime import datetime
 
 valid_tables = ["cuencas", "metodos", "pescas"]
 db = "pescasDB.sqlite"
+
+logs = open("logs.txt", 'a')
+dt = datetime.now()
+logs.write(str(dt)[0:16] + "\n")
 
 def check_args(args):
     if (type(args) is list) and len(args) > 0:

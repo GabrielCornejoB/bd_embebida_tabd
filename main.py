@@ -3,6 +3,7 @@ import os
 import json
 import sqlite3 as sql
 import sys
+from datetime import datetime
 
 valid_tables = ["cuencas", "metodos", "pescas", "v_pescas_detalle"]
 db = "pescasDB.sqlite"
@@ -93,6 +94,8 @@ def create(table_name, args):
     except Exception as e:
         return jsonize("[ERROR] " + str(e))
     else:
+        with open("logs.txt", 'a', encoding='utf-8') as logs:
+            logs.write("[" + str(datetime.now())[0:16] + "]\tCREATE on " + table_name + ", args:" + str(args) + "\n")
         return jsonize("[MSG] Entry created succesfully! :)")
 
 @eel.expose
@@ -142,6 +145,8 @@ def update(table_name, args):
     except Exception as e:
         return jsonize('[ERROR]:' + e)
     else:
+        with open("logs.txt", 'a', encoding='utf-8') as logs:
+            logs.write("[" + str(datetime.now())[0:16] + "]\tUPDATE on " + table_name + ", id: " + args[-1] + ", args: " + str(args) + "\n")
         return jsonize("[MSG] Entry updated succesfully!")
 
 @eel.expose
@@ -170,6 +175,8 @@ def delete(table_name, arg):
     except Exception as e:
         return jsonize("[ERROR] " + e)
     else:
+        with open("logs.txt", 'a', encoding='utf-8') as logs:
+            logs.write("[" + str(datetime.now())[0:16] + "]\tDELETE on " + table_name + ", (id: " + str(arg) + ")\n")
         return jsonize("[MSG] Entry deleted succesfully!")
 
 eel.start("index.html", cmdline_args=['--start-fullscreen'])

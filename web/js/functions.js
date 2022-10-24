@@ -10,8 +10,8 @@ document.getElementById("nav").innerHTML = `
 <a href="pescas.html"><span class="material-symbols-outlined nav_icons" id="pescas_nav">set_meal</span></a>
 <a href="metodos.html"><span class="material-symbols-outlined nav_icons" id="metodos_nav">phishing</span></a>
 <a href="cuencas.html"><span class="material-symbols-outlined nav_icons" id="cuencas_nav">water</span></a>
-<span class="material-symbols-outlined nav_icons">info</span>
-<span class="material-symbols-outlined nav_icons">help</span> 
+<span class="material-symbols-outlined nav_icons" onclick="toggle_popup('popup_info')">info</span>
+<span class="material-symbols-outlined nav_icons" onclick="toggle_popup('popup_help')">help</span> 
 </div>
 <div class="left_panel_bottom">       
 <span class="material-symbols-outlined nav_icons" onclick="alert('esto no funciona jeje')">logout</span>

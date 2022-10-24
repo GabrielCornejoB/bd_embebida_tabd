@@ -4,7 +4,7 @@ import json
 import sqlite3 as sql
 import sys
 
-valid_tables = ["cuencas", "metodos", "pescas"]
+valid_tables = ["cuencas", "metodos", "pescas", "v_pescas_detalle"]
 db = "pescasDB.sqlite"
 
 # eel.init(os.path.dirname(os.path.realpath(__file__)) + "\\web")

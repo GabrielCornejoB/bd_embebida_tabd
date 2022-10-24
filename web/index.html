@@ -15,36 +15,44 @@
         </div>
         <div class="index_panel">
             <div class="index_title index_box">
-                <p>hola</p>
+                <h1>Pescas AUNAP</h1>
             </div>    
             <div class="index_cards">
-                <div class="index_card index_box">
-                    <!-- Link a AUNAP -->
+                <div class="index_card index_box" title="Sitio web de la AUNAP" onclick="new_window('https://www.aunap.gov.co/')">
+                    <img src="icons/AUNAP248X107.svg" style="width: 90%; height: auto;">
                 </div>
                 <div class="index_card index_box">
                     <!-- Tutorial / Como usar / Como empezar / Instrucciones / Icono que dice lo anterior (aun no me decido) -->
+                    <h3>Tutorial</h3>
                 </div>
                 <div class="index_card index_box">
+                    <h3>Logs</h3>
                     <!-- Historial de cambios / Logs / Registro de auditoria  -->
                 </div>
-                <div class="index_card index_box">
-                    <!-- Link al repo en github -->
+                <div class="index_card index_box" title="Repositorio del proyecto" onclick="new_window('https://github.com/GabrielCornejoB/bd_embebida_tabd')">
+                    <img src="icons/iconmonstr-github-1.svg" style="width: 40%; height: auto;">
                 </div>
             </div>
             <div class="index_view">
                 <div class="view_title index_box">
-                    <!-- Título tabla: Registro Pescas Aunap  -->
+                    <h3>Registro de Pescas AUNAP</h3>  
                 </div>
                 <div class="view_table index_box">
-                    <!-- Tabla con la vista: v_detalle_pescas -->
+                    <table class="content_table" id="data"></table>
                 </div>
                 <div class="view_count index_box">
-                    <!-- Contador con la cantidad de registros de pescas -->
+                    <div class="count_title">
+                        <h4>Pescas Registradas</h4>
+                    </div>
+                    <div class="count">
+                        <p id="count_pescas"></p>
+                    </div>
                 </div>
             </div> 
         </div>
     </div>
     <script type="text/javascript" src="js/functions.js"></script>
+    <script type="text/javascript" src="js/crud.js"></script>
     <script type = "text/javascript" src = "eel.js"></script> 
 </body>
 </html>

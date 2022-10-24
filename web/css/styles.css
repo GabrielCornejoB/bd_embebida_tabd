@@ -37,7 +37,7 @@ th {
     top: 0;
 }
 h1 {
-    font-size: 45px;
+    font-size: 50px;
 }
 
 .panel {
@@ -112,9 +112,12 @@ h1 {
     border-radius: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 }
+.index_box h1 {
+    font-size: 65px;
+}
 .index_title {
-    background: rebeccapurple;
     height: 15%;
+    box-shadow: none;
 }
 .index_cards {
     display: flex;
@@ -125,27 +128,78 @@ h1 {
 .index_card {
     height: 100%;
     width: calc((100% - 75px) / 4);
-    background: #353B55;
+    background: var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.5s;
 }
+.index_card:hover {
+    transform: scale(1.05);
+    background: var(--gray_2);
+}
+.index_card h3 {
+    font-size: 40px;
+    opacity: 0.35;
+    
+}
+
 .index_view {
     display: grid;
     gap: 25px;
     grid-template-columns: 20% calc(80% - 25px);
+    grid-template-rows: calc(50% - 12px) calc(50% - 12px);
     height: calc(55% - 50px);
     
 }
 .view_title {
-    background: #dc143c;
+    background: var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.view_title h3 {
+    padding: 0 10px;
+    font-size: 23px;
+    color: var(--white);
 }
 .view_count {
-    background: blue;
+    display: flex;
+    flex-direction: column;
+}
+.count_title {
+    height: 30%;
+    background: var(--blue);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 19px;
+}
+.count {
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
 }
 .view_table {
-    background: #151515;
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1; 
     grid-row-end: 3;
+    border-radius: 20px;
+}
+.view_table thead tr th:first-of-type{
+    border-top-left-radius: 20px;
+}
+.view_table thead tr th:last-of-type{
+    border-top-right-radius: 20px;
 }
 
 /* ------------------------------- */

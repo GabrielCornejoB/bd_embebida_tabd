@@ -43,3 +43,7 @@ function clean_fields () {
     for (let i of inputs) { i.value=""; }
     for (let i of selects) { i.value=""; }
 }
+function new_window (url) {
+    window.open(url);
+}
+

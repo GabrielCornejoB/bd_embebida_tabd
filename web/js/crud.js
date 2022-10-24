@@ -182,5 +182,6 @@ if (table_name === "index") {
 }
 function show_logs(output) {
     parsed_output = JSON.parse(output);
-    console.log(parsed_output);
+    document.getElementById("logs_div").innerHTML = parsed_output;
+    toggle_popup("popup_logs")
 }

@@ -124,6 +124,7 @@ h1 {
     flex-direction: row;
     gap: 25px;
     height: 30%;
+    text-align: center;
 }
 .index_card {
     height: 100%;
@@ -356,6 +357,8 @@ h1 {
     border-radius: 20px;
     z-index: 100;
     width: 60%;
+    height: 50%;
+    overflow-y: auto;
     color: var(--white);
     background: var(--black);
     transition: 0.6s ease-in-out;
@@ -371,6 +374,9 @@ h1 {
     border-bottom: 2px solid var(--white);
     font-size: 35px;
     font-weight: bold;
+    background: var(--black);
+    position: sticky;
+    top: 0;
 }
 .popup_header .close_btn {
     cursor: pointer;

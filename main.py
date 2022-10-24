@@ -146,7 +146,7 @@ def update(table_name, args):
         return jsonize('[ERROR]:' + e)
     else:
         with open("logs.txt", 'a', encoding='utf-8') as logs:
-            logs.write("[" + str(datetime.now())[0:16] + "]\tUPDATE on " + table_name + ", id: " + args[-1] + ", args: " + str(args) + "\n")
+            logs.write("[" + str(datetime.now())[0:16] + "]\tUPDATE on " + table_name + ", id: " + str(args[-1]) + ", args: " + str(args) + "\n")
         return jsonize("[MSG] Entry updated succesfully!")
 
 @eel.expose
@@ -178,5 +178,12 @@ def delete(table_name, arg):
         with open("logs.txt", 'a', encoding='utf-8') as logs:
             logs.write("[" + str(datetime.now())[0:16] + "]\tDELETE on " + table_name + ", (id: " + str(arg) + ")\n")
         return jsonize("[MSG] Entry deleted succesfully!")
+
+@eel.expose
+def get_logs():
+    logs =  open("logs.txt", 'r', encoding='utf-8')
+    data = logs.read()
+    logs.close()
+    return jsonize(data)
 
 eel.start("index.html", cmdline_args=['--start-fullscreen'])

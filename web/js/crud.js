@@ -77,8 +77,10 @@ function load_table (output) {
     }
     table_string = table_string.concat("</tbody>");
     document.getElementById("data").innerHTML = table_string;
-    document.getElementById("update_select").innerHTML = select_string;
-    document.getElementById("delete_select").innerHTML = select_string;
+    if (table_name !== "index") {
+        document.getElementById("update_select").innerHTML = select_string;
+        document.getElementById("delete_select").innerHTML = select_string;
+    }  
 }
 
 //CREATE
@@ -169,4 +171,16 @@ function delete_register(output) {
         write_msg(parsed_output);
         update_table();
     }
+}
+
+
+// OTHER
+if (table_name === "index") {
+    document.querySelector(".logs").onclick = function() {
+        eel.get_logs()(show_logs);
+    }
+}
+function show_logs(output) {
+    parsed_output = JSON.parse(output);
+    console.log(parsed_output);
 }

@@ -108,6 +108,10 @@ h1 {
     flex-direction: column;
     gap: 25px;
 }
+.index_box {
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
 .index_title {
     background: rebeccapurple;
     height: 15%;

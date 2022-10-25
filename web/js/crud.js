@@ -18,7 +18,7 @@ window.onload = function () {
 
 function load_select_met (output) {
     parsed_output = JSON.parse(output);
-    if (typeof parsed_output === 'string' && parsed_output.startsWith("[ERROR]")) {
+    if (typeof parsed_output === 'string' && parsed_output.startsWith("[ERR]")) {
         write_error(parsed_output);
         return
     }
@@ -30,7 +30,7 @@ function load_select_met (output) {
 }
 function load_select_cue (output) {
     parsed_output = JSON.parse(output);
-    if (typeof parsed_output === 'string' && parsed_output.startsWith("[ERROR]")) {
+    if (typeof parsed_output === 'string' && parsed_output.startsWith("[ERR]")) {
         write_error(parsed_output);
         return
     }
@@ -46,7 +46,7 @@ function load_table (output) {
     console.log("READ");
     parsed_output = JSON.parse(output);
 
-    if (typeof parsed_output === 'string' && parsed_output.startsWith("[ERROR]")) {
+    if (typeof parsed_output === 'string' && parsed_output.startsWith("[ERR]")) {
         write_error(parsed_output);
         return
     }
@@ -105,7 +105,7 @@ function add_register(output) {
     console.log("CREATE");
     clean_fields();
     parsed_output = JSON.parse(output);
-    if (parsed_output.startsWith("[ERROR]")) {
+    if (parsed_output.startsWith("[ERR]")) {
         write_error(parsed_output);
         return
     }
@@ -142,7 +142,7 @@ function update_register(output) {
     console.log("UPDATE");
     clean_fields();
     parsed_output = JSON.parse(output);
-    if (parsed_output.startsWith("[ERROR]")) {
+    if (parsed_output.startsWith("[ERR]")) {
         write_error(parsed_output);
         return
     }
@@ -163,7 +163,7 @@ function delete_register(output) {
     console.log("DELETE");
     clean_fields();
     parsed_output = JSON.parse(output);
-    if (parsed_output.startsWith("[ERROR")) {
+    if (parsed_output.startsWith("[ERR]")) {
         write_error(parsed_output);
         return
     }

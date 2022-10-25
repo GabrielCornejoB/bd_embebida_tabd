@@ -3,3 +3,5 @@ Registro de cambios en base de datos Pescas AUNAP
 [2022-10-25 10:11]	UPDATE on pescas, id: 1, args: [2, 3, '2018-02-14', 31.21, 1]<br>
 [2022-10-25 10:11]	CREATE on pescas, args:[4, 1, '2022-10-25', 15.24]<br>
 [2022-10-25 10:12]	CREATE on pescas, args:[3, 2, '2022-10-04', 23.12]<br>
+[2022-10-25 18:15]	CREATE on cuencas, args:['Río Medellín']<br>
+[2022-10-25 18:32]	CREATE on metodos, args:['RPG-7']<br>

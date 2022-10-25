@@ -30,11 +30,17 @@ else if (table_name === "cuencas") {
 
 function write_error (error_msg) {
     console.log("write_error() called");
-    alert(error_msg);
+    document.getElementById("popup_title").innerHTML = "ERROR 😡😾🤬";
+    document.getElementById("popup_body").innerHTML = error_msg.substring(5);
+    document.getElementById("popup_msg").classList.toggle('active');
+    document.getElementById("overlay").classList.toggle('active');
 }
 function write_msg (msg) {
     console.log("write_msg() called");
-    alert(msg);
+    document.getElementById("popup_title").innerHTML = "YEEEI 😉😺🥳";
+    document.getElementById("popup_body").innerHTML = msg.substring(5);
+    document.getElementById("popup_msg").classList.toggle('active');
+    document.getElementById("overlay").classList.toggle('active');
 }
 function clean_fields () {
     console.log("clean_fields() called");

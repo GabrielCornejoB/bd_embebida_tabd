@@ -398,6 +398,10 @@ h1 {
 .popup_body {
     padding: 15px 20px;
 }
+.popup_msg {
+    width: 30%;
+    height: 25%;
+}
 #logs_div {
     font-family: 'Courier New', monospace !important;
 }

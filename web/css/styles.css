@@ -398,6 +398,9 @@ h1 {
 .popup_body {
     padding: 15px 20px;
 }
+#logs_div {
+    font-family: 'Courier New', monospace !important;
+}
 #overlay {
     position: fixed;
     opacity: 0;

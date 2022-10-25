@@ -95,7 +95,7 @@ def create(table_name, args):
         return jsonize("[ERROR] " + str(e))
     else:
         with open("logs.txt", 'a', encoding='utf-8') as logs:
-            logs.write("[" + str(datetime.now())[0:16] + "]\tCREATE on " + table_name + ", args:" + str(args) + "\n")
+            logs.write("[" + str(datetime.now())[0:16] + "]\tCREATE on " + table_name + ", args:" + str(args) + "<br>\n")
         return jsonize("[MSG] Entry created succesfully! :)")
 
 @eel.expose
@@ -146,7 +146,7 @@ def update(table_name, args):
         return jsonize('[ERROR]:' + e)
     else:
         with open("logs.txt", 'a', encoding='utf-8') as logs:
-            logs.write("[" + str(datetime.now())[0:16] + "]\tUPDATE on " + table_name + ", id: " + str(args[-1]) + ", args: " + str(args) + "\n")
+            logs.write("[" + str(datetime.now())[0:16] + "]\tUPDATE on " + table_name + ", id: " + str(args[-1]) + ", args: " + str(args) + "<br>\n")
         return jsonize("[MSG] Entry updated succesfully!")
 
 @eel.expose
@@ -176,7 +176,7 @@ def delete(table_name, arg):
         return jsonize("[ERROR] " + e)
     else:
         with open("logs.txt", 'a', encoding='utf-8') as logs:
-            logs.write("[" + str(datetime.now())[0:16] + "]\tDELETE on " + table_name + ", (id: " + str(arg) + ")\n")
+            logs.write("[" + str(datetime.now())[0:16] + "]\tDELETE on " + table_name + ", (id: " + str(arg) + ")<br>\n")
         return jsonize("[MSG] Entry deleted succesfully!")
 
 @eel.expose

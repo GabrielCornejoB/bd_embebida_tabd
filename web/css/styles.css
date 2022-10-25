@@ -315,6 +315,10 @@ h1 {
 .delete h2 {
     color: var(--red);
 }
+.main_title {
+    background: none;
+    box-shadow: none;
+}
 
 /* -------------------------------------------------- */
 

@@ -28,13 +28,25 @@
 
         </div>
     </div>
+    <div class="popup" id="popup_exit">
+        <div class="popup_header">
+            <div class="title">¿Qué es esto?</div>
+            <button class="close_btn" onclick="toggle_popup('popup_exit')">&times;</button>
+        </div>
+        <div class="popup_body">
+            Esto no funciona jsjsjs, pero si quieres cerrar la aplicación presiona la combinación de teclas: Ctrl + w
+        </div>
+    </div>
     <div id="overlay"></div>
 
     <div class="panel">
         <div class="left_panel" id="nav">     
         </div>
         <div class="main_panel">
-            <div class="card info" style="background: transparent; box-shadow: none;"><h1>Tabla Registro Pescas</h1></div>
+            <div class="card info main_title">
+                <h1>Tabla Registro Pescas</h1>
+                <!-- mensaje de error/success -->
+            </div>
 
             <div class="card crud create">
                 <div class="card_title">

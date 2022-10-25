@@ -14,7 +14,7 @@ document.getElementById("nav").innerHTML = `
 <span class="material-symbols-outlined nav_icons" onclick="toggle_popup('popup_help')">help</span> 
 </div>
 <div class="left_panel_bottom">       
-<span class="material-symbols-outlined nav_icons" onclick="alert('esto no funciona jeje')">logout</span>
+<span class="material-symbols-outlined nav_icons" onclick="toggle_popup('popup_exit')">logout</span>
 </div>
 `;
 

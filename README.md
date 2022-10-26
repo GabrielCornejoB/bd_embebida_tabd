@@ -65,6 +65,8 @@ Esto se compone en 3 tablas: Pescas, Cuencas Hidrográficas y Métodos de Pesca.
 
 La tabla Pescas es la tabla principal, y las tablas Cuencas y Métodos son tablas secundarias que son usadas en la tabla principal. A continuación se mostrará el esquema relacional de las tablas con sus campos:
 
+![esquema](esquema_pescas.png)
+
 ---
 
 ## **Implementación**

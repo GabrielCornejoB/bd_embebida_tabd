@@ -78,6 +78,8 @@ def create(table_name, args):
                     args[3] = float(args[3])
                 except:
                     return jsonize("[ERR]Los argumentos son de tipo no valido")
+                if float(args[3]) <= float(0):
+                    return jsonize("[ERR]El peso de la pesca no puede cero 0 o negativo")
                 if not check_existence(args[0], "cuencas", "id_cuenca"):
                     return jsonize("[ERR]El argumento 1 no existe en la tabla Cuencas")
                 if not check_existence(args[1], "metodos", "id_metodo"):
@@ -130,6 +132,8 @@ def update(table_name, args):
                     args[4] = int(args[4])
                 except:
                     return jsonize("[ERR]Los argumentos son de tipo no valido")
+                if float(args[3]) <= float(0):
+                    return jsonize("[ERR]El peso de la pesca no puede cero 0 o negativo")
                 if not check_existence(args[0], "cuencas", "id_cuenca"):
                     return jsonize("[ERR]El argumento 1 no existe en la tabla Cuencas")
                 if not check_existence(args[1], "metodos", "id_metodo"):

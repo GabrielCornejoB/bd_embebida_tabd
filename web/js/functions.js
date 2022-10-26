@@ -4,17 +4,17 @@ console.log(table_name);
 
 document.getElementById("nav").innerHTML = `
 <div class="left_panel_top">
-<a href="index.html"><span class="material-symbols-outlined nav_icons home_icon">home</span></a>               
+<a href="index.html" title="Inicio"><span class="material-symbols-outlined nav_icons home_icon">home</span></a>               
 </div>
 <div class="left_panel_middle">
-<a href="pescas.html"><span class="material-symbols-outlined nav_icons" id="pescas_nav">set_meal</span></a>
-<a href="metodos.html"><span class="material-symbols-outlined nav_icons" id="metodos_nav">phishing</span></a>
-<a href="cuencas.html"><span class="material-symbols-outlined nav_icons" id="cuencas_nav">water</span></a>
-<span class="material-symbols-outlined nav_icons" onclick="toggle_popup('popup_info')">info</span>
-<span class="material-symbols-outlined nav_icons" onclick="toggle_popup('popup_help')">help</span> 
+<a href="pescas.html" title="Pescas"><span class="material-symbols-outlined nav_icons" id="pescas_nav">set_meal</span></a>
+<a href="metodos.html" title="Métodos"><span class="material-symbols-outlined nav_icons" id="metodos_nav">phishing</span></a>
+<a href="cuencas.html" title="Cuencas"><span class="material-symbols-outlined nav_icons" id="cuencas_nav">water</span></a>
+<span title="Info" class="material-symbols-outlined nav_icons" onclick="toggle_popup('popup_info')">info</span>
+<span title="Ayuda" class="material-symbols-outlined nav_icons" onclick="toggle_popup('popup_help')">help</span> 
 </div>
 <div class="left_panel_bottom">       
-<span class="material-symbols-outlined nav_icons" onclick="toggle_popup('popup_exit')">logout</span>
+<span title="Ctrl + w" class="material-symbols-outlined nav_icons" onclick="toggle_popup('popup_exit')">logout</span>
 </div>
 `;
 

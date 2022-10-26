@@ -195,6 +195,7 @@ h1 {
     grid-row-start: 1; 
     grid-row-end: 3;
     border-radius: 20px;
+    overflow-y: auto;
 }
 .view_table thead tr th:first-of-type{
     border-top-left-radius: 20px;
@@ -246,6 +247,14 @@ h1 {
     height: 100%;
     width: 85%;
     overflow-y:auto;
+}
+.inputs::-webkit-scrollbar {
+    display: block;
+    width: 8px;
+}
+.inputs::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background: var(--gray_2);
 }
 .inputs input, .inputs select {
     outline: none;
@@ -367,6 +376,7 @@ h1 {
     background: var(--black);
     transition: 0.6s ease-in-out;
 }
+
 .popup.active {
     transform: translate(-50%, -50%) scale(1);
 }
@@ -397,6 +407,7 @@ h1 {
 }
 .popup_body {
     padding: 15px 20px;
+    overflow-y: auto;
 }
 .popup_msg {
     width: 30%;
